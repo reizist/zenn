@@ -350,12 +350,6 @@ Cloud Functions をデプロイすると、Google Cloud 側の Cloud Build が `
 
 土台ができれば、非エンジニアを含むアプリ作成者は **Google Cloud コンソールも Terraform も触らず**（ローカル PC に本番デプロイ権限も持たず）アプリを増やせます。
 
-| 立場 | 事前に必要なもの | GCP 権限・Terraform |
-| :--- | :--- | :---: |
-| エンジニア（初回のみ） | 複製した GitHub リポジトリ、課金有効化済み GCP アカウント、Antigravity、`gcloud` / `terraform` / `pnpm` | 必要（最初の 1 回） |
-| 非エンジニア・アプリ作成者 | GitHub アカウント、Antigravity、ローカル確認用 Node.js / `pnpm` | **不要** |
-
-
 実行すると、Antigravity が以下の流れで PR 作成まで進めます。
 
 1. **データ分類確認**: 個人情報・社外秘・外部送信・保持期間（TTL）を確認し、機密データは Tier 1 / 2 へ誘導
