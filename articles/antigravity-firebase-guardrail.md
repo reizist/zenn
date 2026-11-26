@@ -132,6 +132,16 @@ Antigravity の標準パスである `.agents/skills/` に 2 つの Skill を置
 
 ![全体設計: 2 つの Agent Skill と共有 Firebase ガードレール](/images/01_overview_flow.png)
 
+### 前提とする環境
+
+| 立場 | 事前に必要なもの | GCP 権限・Terraform |
+| :--- | :--- | :---: |
+| エンジニア（初回のみ） | 複製した GitHub リポジトリ、有効な Google Cloud 課金アカウント（または課金紐付け済みの既存 PJ＋`create_project = false`）、Antigravity、`gcloud` / `terraform` / `pnpm` | 必要（最初の 1 回） |
+| アプリ作成者（非エンジニア含む） | GitHub アカウント、Antigravity、ローカル確認用 Node.js 24 / `pnpm` / Java 21+（Emulator 用） | **不要** |
+
+- **Blaze プラン（有償・従量課金）**: Terraform がプロジェクト作成と同時に課金アカウントを紐付けるため、Firebase コンソールでのプラン切替は不要です（課金アカウント自体が未作成の場合のみ、事前に GCP コンソールで 1 回作成）。
+- **初回のみ残るコンソール手作業**: Google ログイン用 OAuth クライアントは API / Terraform から作れないため、初回構築時に Firebase コンソールで Google ログインを有効にする操作だけ手作業で行います（Skill が手順を案内）。2 回目以降のアプリ量産ではコンソール操作は不要です。
+
 ---
 
 ### 初回だけエンジニア側で構築するガードレール
