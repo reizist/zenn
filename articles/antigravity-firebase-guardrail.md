@@ -24,8 +24,8 @@ Google Cloud やインフラの経験にかかわらず、生成 AI やエージ
 
 - 社内アプリを安全に量産する環境を [Google Antigravity](https://antigravity.google) と Firebase を使い構築します。共有プロジェクトに複数アプリを分離して同居させる仕組みを検証しました。
 - 長い規約書を配る代わりに、初期構築とアプリ量産のルールを [Agent Skills](https://antigravity.google/docs/skills)（`.agents/skills/`）にまとめ、**リポジトリを AI に読ませるだけで使い始められる**形にしています。
-- DB 作成のたびに承認待ちが発生するのを避けるため、**標準 Rules テンプレートを使い外部送信・シークレットを持たない** Tier 0 アプリは `self-service/` への定義追加だけで承認待ちなしで DB 払い出しまで自動化しつつ、**予算アラート（Pub/Sub 連携）＋DB 作成監査ログ＋事前データ分類確認**でコスト暴走と社内データの持ち出しを押さえています。
-- サンプルの Gemini 連携アプリ `news-watcher` をこの上で動かし、最小権限の `firebase deploy` で実際に踏んだ 6 つの罠への対処まで Terraform とデプロイスクリプトに組み込みました。
+- 基盤の面倒を見る側(エンジニア)と利用者側(アプリ作成者)の双方の立場を鑑みてなるべく省コストになるように設計しています。
+- この記事に記載したskillを用いて作ったサンプルの Gemini 連携のニュース収集アプリ `news-watcher` に触れ、実運用上のハマりどころについてもメモしました。
 
 **端的にはこれを実行すれば始められます**（公開リポジトリ: https://github.com/reizist/antigravity-firebase-guardrail を複製して Antigravity で開くだけ）:
 
